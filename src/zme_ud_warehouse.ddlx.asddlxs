@@ -1,0 +1,22 @@
+@Metadata.layer: #CORE
+annotate view ZI_UD_WAREHOUSE with
+{
+
+  @UI.selectionField: [{ position: 10 }]
+  @UI.lineItem: [{ position: 10 , label: 'Warehouse ID'}]
+  @EndUserText.label: 'Warehouse'
+  Lgort;
+  @EndUserText.label: 'Material Number'
+  @UI.selectionField: [{ position: 20 }]
+  @UI.lineItem: [{ position: 20 , label: 'Material Number'}]
+  Matnr;
+  @UI.lineItem: [{ position: 30 , label: 'Quantity'}]
+  QuantityAvail;
+  //  @UI.hidden: true
+  //  Vrkme;
+  @UI.lineItem: [{ position: 40 , label: 'Distance'}]
+  DistanceTo;
+  //  @UI.hidden: true
+  //  DistUom;
+
+}

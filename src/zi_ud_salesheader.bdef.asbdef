@@ -1,0 +1,95 @@
+managed implementation in class zbp_i_ud_salesheader unique;
+strict ( 2 );
+
+define behavior for Zi_ud_SalesHeader //alias <alias_name>
+persistent table zud_salesorder_h
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( mandatory : create, readonly : update ) Vbeln;
+  field ( readonly : update ) Kunnr, Netwr, Waerk, Bstnk , Route, Vdatu, NameCo, Street, State, Pin;
+  association _Item { create; }
+  association _Carrier;
+
+  mapping for ZUD_SALESORDER_H
+  {
+      Vbeln = vbeln;
+      Kunnr = kunnr;
+      Netwr = netwr;
+      Waerk = waerk;
+      Bstnk = bstnk;
+      Route = route;
+      Vdatu = vdatu;
+      NameCo = name_co;
+      Street = street;
+      State = state;
+      Pin = pin;
+
+  }
+}
+
+define behavior for Zi_UD_ITEM //alias <alias_name>
+persistent table zud_item_i
+lock dependent by _Header
+authorization dependent by _Header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Vbeln;
+  field (  mandatory : create ,  readonly : update ) Posnr;
+    field ( readonly :update ) Matnr, Kwmeng,  Vrkme , Werks,
+    Netwr, Waerk,Brgew, Ntgew, Gewei   ;
+
+
+
+  association _Header;
+
+    mapping for ZUD_ITEM_I
+  {
+
+      Vbeln = vbeln;
+      Posnr = posnr;
+      Matnr = matnr;
+      Kwmeng = kwmeng;
+      Vrkme = vrkme;
+      Werks = werks;
+      Netwr = netwr;
+      Waerk = waerk;
+      Brgew = brgew;
+      Ntgew = ntgew;
+      Gewei = gewei;
+      Lgort = lgort;
+  }
+}
+
+
+define behavior for ZI_UD_CARRIER //alias <alias_name>
+persistent table ZUD_CARRIER_S
+lock dependent by _Header
+authorization dependent by _Header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Vbeln;
+
+field ( readonly ) DeliveryId;
+
+
+action getCarrier result [1] $self;
+  association _Header;
+
+    mapping for ZUD_CARRIER_S
+  {
+      DeliveryId = delivery_id;
+      Vbeln = vbeln;
+      Posnr = posnr;
+      Carrier = carrier;
+
+  }
+}

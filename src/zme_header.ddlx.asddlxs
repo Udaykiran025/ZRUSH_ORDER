@@ -1,0 +1,72 @@
+@Metadata.layer: #CORE
+
+@UI: {
+    headerInfo: {
+        typeName: 'Sales',
+        typeNamePlural: 'Sales Header Details',
+        title: {  type: #STANDARD, value: 'Vbeln' }
+      },
+    presentationVariant: [{ sortOrder: [{ by: 'Vbeln', direction:
+    #ASC }] }]
+
+}
+annotate view Zc_ud_salesHeader with
+{
+  @UI.facet: [{ id: 'Header',
+                      purpose: #STANDARD,
+                      type: #IDENTIFICATION_REFERENCE,
+                      position: 10,
+                      label: 'Sales Header Details'},
+                           { id: 'Item',
+                           purpose: #STANDARD,
+                           type: #LINEITEM_REFERENCE,
+                           position: 20,
+                           label: 'Item Details',
+                           targetElement: '_Item'
+                          },
+                          { id: 'Wharehouse',
+                           purpose: #STANDARD,
+                           type: #LINEITEM_REFERENCE,
+                           position: 30,
+                           label: 'Carrier Details',
+                             targetElement: '_Carrier'
+                          }
+
+                         ]
+  @UI.lineItem: [{ position: 10 , label: 'Sales Document'}]
+  @UI.identification: [{ position: 10, label: 'Sales Document' }]
+  @UI.selectionField: [{ position: 10 }]
+  @EndUserText.label: 'Sales Document'
+  @Search.defaultSearchElement: true
+  Vbeln;
+  @UI.lineItem: [{ position: 20 , label: 'Sold-to Party'}]
+  @UI.identification: [{ position: 20, label: 'Sold-to Party' }]
+  Kunnr;
+  @UI.lineItem: [{ position: 30 , label: 'Net Value '}]
+  @UI.identification: [{ position: 30, label: 'Net Value ' }]
+  Netwr;
+  //  Waerk;
+  @UI.lineItem: [{ position: 40 , label: 'Customer Reference'}]
+  @UI.identification: [{ position: 40, label: 'Customer Reference' }]
+  Bstnk;
+  @UI.lineItem: [{ position: 50 , label: 'Route'}]
+  @UI.identification: [{ position: 50, label: 'Route' }]
+  Route;
+  @UI.lineItem: [{ position: 60 , label: 'Requested Delivery Date'}]
+  @UI.identification: [{ position: 60, label: 'Requested Delivery Date' }]
+  Vdatu;
+  @UI.lineItem: [{ position: 70 , label: 'c/o name'}]
+  @UI.identification: [{ position: 70, label: 'c/o name' }]
+  NameCo;
+  @UI.lineItem: [{ position: 80 , label: 'Street'}]
+  @UI.identification: [{ position: 80, label: 'Street' }]
+  Street;
+  @UI.lineItem: [{ position: 90 , label: 'Sate'}]
+  @UI.identification: [{ position: 90, label: 'Sate' }]
+  State;
+  @UI.lineItem: [{ position: 100 , label: 'Postal Code '}]
+  @UI.identification: [{ position: 100, label: 'Postal Code ' }]
+  Pin;
+  /* Associations */
+  //_Item;
+}

@@ -1,0 +1,63 @@
+@Metadata.layer: #CORE
+@UI: {
+    headerInfo: {
+        typeName: 'Item',
+        typeNamePlural: 'Item Details',
+        title: {  type: #STANDARD, value: 'Vbeln'  } },
+    presentationVariant: [{ sortOrder: [{ by: 'Vbeln', direction:
+    #ASC }] }]
+//#IDENTIFICATION_REFERENCE
+}
+annotate view ZC_uD_ITEM with
+{
+
+
+
+  @UI.facet: [{ id: 'Item',
+                      purpose: #STANDARD,
+                      type: #IDENTIFICATION_REFERENCE,
+                      position: 10,
+                      label: 'Sales Header Details'}]
+
+  //    Vbeln;
+  @UI.lineItem: [{ position: 10, label: 'Sales Document Item' }]
+  @UI.identification: [{ position: 10 , label: 'Sales Document Item'}]
+  Posnr;
+  @UI.lineItem: [{ position: 20, label: 'Material Number' }]
+  @UI.identification: [{ position: 20, label: 'Material Number' }]
+  Matnr;
+  @UI.lineItem: [{ position: 30, label: 'Order Quantity' }]
+  @UI.identification: [{ position: 30, label: 'Order Quantity' }]
+  Kwmeng;
+
+  //  Vrkme;
+  @UI.lineItem: [{ position: 40, label: 'Plant' }]
+  @UI.identification: [{ position: 40, label: 'Plant' }]
+  Werks;
+  @UI.lineItem: [{ position: 50, label: 'Net Value' }]
+  @UI.identification: [{ position: 50, label: 'Net Value' }]
+  Netwr;
+  //  Waerk;
+  @UI.lineItem: [{ position: 60, label: 'Gross Weight ' }]
+  @UI.identification: [{ position: 60, label: 'Gross Weight ' }]
+  Brgew;
+  @UI.lineItem: [{ position: 70, label: 'Net Weight' }]
+  @UI.identification: [{ position: 70, label: 'Net Weight' }]
+  Ntgew;
+  //  Gewei;
+  @Consumption.valueHelpDefinition: [{ entity: {
+      name: 'ZWAREHOUSE_UD',
+      element: 'Lgort'
+  },
+   additionalBinding: [{ element: 'Lgort',
+                               localElement: 'Lgort' },
+                             { element: 'Matnr',
+                             localElement: 'Matnr' }]
+   }]
+  @UI.lineItem: [{ position: 80, label: 'Wharehouse ' }]
+  @UI.identification: [{ position: 80, label: 'Wharehouse' }]
+  Lgort;
+  //    /* Associations */
+  //    _Header;
+
+}

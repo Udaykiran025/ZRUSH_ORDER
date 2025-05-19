@@ -1,0 +1,11 @@
+@EndUserText.label: 'Service definition for sales'
+define service ZSD_UD_SALES {
+  expose Zc_ud_salesHeader;
+  expose ZC_uD_ITEM;
+  expose ZC_UD_CARRIER;
+  expose ZI_UD_WAREHOUSE;
+  expose ZWAREHOUSE_UD;
+  expose ZCD_WAREHOUSE;
+  expose ZCD_MATERIALS;
+  expose ZI_Master_ZIP;
+}
